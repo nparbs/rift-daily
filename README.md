@@ -27,7 +27,7 @@ Adding champions changes which answer falls on each future day. Days already pla
 
 ## Running locally
 
-Any static server works, for example `npx serve .`, or use the container:
+Use the container. `index.html` loads its JS and CSS from a `/v/<hash>/` path that the image build fills in, so a plain static server won't work:
 
 ```sh
 docker build -t rift-daily . && docker run --rm -p 8099:8080 rift-daily
