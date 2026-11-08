@@ -16,8 +16,9 @@ Rift Daily is a static site with three daily League of Legends puzzles, live at 
 - **Caching fix**: Cloudflare caches JS/CSS for 4 hours, so the Docker build stamps a content hash into the asset paths (`/v/<hash>/...`). Each deploy shows up immediately.
 - **CSP** allows the Cloudflare Web Analytics beacon. Cloudflare's injected bot-detection inline script is blocked on purpose.
 
-## In progress
-- **Champion guide**: a button on every page that opens an overlay listing every champion with their portrait.
+### v0.2: champion guide (2026-11-08)
+- **Champion guide**: a grid button in the header on every page opens an overlay with all 173 champions and their portraits, alphabetical, with a search box and a count of matches. It closes with ✕, Escape or a click outside. While it's open, typing goes to the search box and not the Wordle board.
+- Added this roadmap.
 
 ## Next
 - Fill in facts for **Locke** and **Zaahen** (currently Wordle-only) and double-check the hand-entered facts in `scripts/extra.mjs`.
