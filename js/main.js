@@ -2,6 +2,7 @@ import * as wordle from "./wordle.js";
 import * as connections from "./connections.js";
 import * as guess from "./guess.js";
 import { dayNumber, el, getStats } from "./util.js";
+import { openGuide } from "./guide.js";
 
 const MODES = {
   wordle: { name: "Wordle", mod: wordle, blurb: "Spell the champion's name in six tries.", glyph: "W" },
@@ -60,5 +61,6 @@ function home() {
     el("p", { class: "muted small center" }, "Each puzzle also has a practice mode for unlimited play."));
 }
 
+document.getElementById("guide-btn").addEventListener("click", openGuide);
 window.addEventListener("hashchange", route);
 route();

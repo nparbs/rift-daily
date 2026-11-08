@@ -119,6 +119,8 @@ export function mount(root, { practice, onPractice }) {
 
   const onKey = (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
+    // Don't type into the board while the champion guide (or any text box) has focus.
+    if (document.querySelector("dialog[open]") || e.target.closest?.("input, textarea")) return;
     if (e.key === "Enter") press("ENTER");
     else if (e.key === "Backspace") press("BACK");
     else if (/^[a-z]$/i.test(e.key)) press(e.key.toUpperCase());
