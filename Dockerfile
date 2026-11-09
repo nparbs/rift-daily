@@ -3,6 +3,7 @@ FROM nginxinc/nginx-unprivileged:1.27-alpine
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html style.css favicon.svg /usr/share/nginx/html/
 COPY js /usr/share/nginx/html/js
+COPY fonts /usr/share/nginx/html/fonts
 # Cloudflare caches JS/CSS for 4 hours, so index.html loads them from /v/<content hash>/.
 # A deploy that changes them changes the URL. nginx maps /v/<hash>/x back to /x.
 USER root

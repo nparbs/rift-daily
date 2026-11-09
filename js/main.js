@@ -29,9 +29,11 @@ function route() {
   const day = dayNumber();
   main.append(el("div", { class: "modebar" },
     el("h2", {}, m.name),
-    el("div", { class: "seg" },
-      el("a", { href: `#/${mode}`, class: practice ? "" : "on" }, `Daily #${day}`),
-      el("a", { href: `#/${mode}/practice`, class: practice ? "on" : "" }, "Practice"))));
+    el("div", { class: "modectl" },
+      el("div", { class: "seg" },
+        el("a", { href: `#/${mode}`, class: practice ? "" : "on" }, `Daily #${day}`),
+        el("a", { href: `#/${mode}/practice`, class: practice ? "on" : "" }, "Practice")),
+      guideButton())));
   const root = el("section", { class: "game " + mode });
   main.append(root);
   const onPractice = () => {
@@ -46,8 +48,10 @@ function home() {
   const day = dayNumber();
   main.append(
     el("div", { class: "hero" },
-      el("h1", {}, "Rift Daily"),
-      el("p", { class: "muted" }, `Three League of Legends word puzzles, new every day. Puzzle #${day}.`)),
+      el("div", { class: "eyebrow" }, `// Puzzle #${day}`),
+      el("h1", {}, "Rift", el("span", {}, "Daily")),
+      el("p", { class: "muted" }, "Three League of Legends word puzzles, new every day."),
+      guideButton()),
     el("div", { class: "cards" }, ...Object.entries(MODES).map(([key, m]) => {
       const s = getStats(key);
       const done = s.lastDay === day;
@@ -61,6 +65,21 @@ function home() {
     el("p", { class: "muted small center" }, "Each puzzle also has a practice mode for unlimited play."));
 }
 
-document.getElementById("guide-btn").addEventListener("click", openGuide);
+// Champion guide button, shown beside Daily/Practice and on the home page.
+function guideButton() {
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", "0 0 20 20");
+  svg.setAttribute("width", "16");
+  svg.setAttribute("height", "16");
+  svg.setAttribute("aria-hidden", "true");
+  const path = document.createElementNS(ns, "path");
+  path.setAttribute("fill", "currentColor");
+  path.setAttribute("d", "M2 2h7v7H2zm9 0h7v7h-7zM2 11h7v7H2zm9 0h7v7h-7z");
+  svg.append(path);
+  return el("button", { class: "guide-btn", type: "button", onclick: openGuide, "aria-label": "Champion guide" }, svg,
+    el("span", { class: "long" }, "Champion guide"), el("span", { class: "short" }, "Champions"));
+}
+
 window.addEventListener("hashchange", route);
 route();

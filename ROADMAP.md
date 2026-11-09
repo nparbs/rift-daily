@@ -20,6 +20,10 @@ Rift Daily is a static site with three daily League of Legends puzzles, live at 
 - **Champion guide**: a grid button in the header on every page opens an overlay with all 173 champions and their portraits, alphabetical, with a search box and a count of matches. It closes with ✕, Escape or a click outside. While it's open, typing goes to the search box and not the Wordle board.
 - Added this roadmap.
 
+### v0.3: new look (2026-11-08)
+- **Hextech / neon restyle**: dark grid background with cyan and magenta glows, cut-corner panels and buttons, hexagon mode icons, and the Chakra Petch display font (self-hosted in `fonts/`, OFL licence, because the CSP blocks font CDNs). League gold stays for titles.
+- **Champion guide button** moved out of the header: it now sits next to Daily/Practice on every mode (shortened to "Champions" on phones) and under the title on the home page.
+
 ## Next
 - Fill in facts for **Locke** and **Zaahen** (currently Wordle-only) and double-check the hand-entered facts in `scripts/extra.mjs`.
 - More hand-written Connections groups, and a review of the existing ones for missing members (e.g. "Fights with a gun").
